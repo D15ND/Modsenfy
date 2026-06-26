@@ -1,0 +1,4 @@
+echo "Start lint-staged"
+npx lint-staged
+echo "Start typecheck"
+npm run typecheck
