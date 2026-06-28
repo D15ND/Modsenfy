@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.12);
+  border-top-left-radius: var(--radius-app);
+  border-top-right-radius: var(--radius-app);
+}
+
+.global {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 22px 35px;
+}
