@@ -18,6 +18,9 @@
     "*.{ts,tsx}": [
       "eslint --fix --max-warnings=0",
       "prettier --write"
+    ],
+    "*.{html,scss}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
