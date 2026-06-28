@@ -22,7 +22,10 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["vite/client"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/routes*": ["./src/routes/*"],
+      "@/components*": ["./src/components/*"],
+      "@/data*": ["./src/data/*"]
     }
   },
   "include": ["src"],

@@ -1,0 +1,125 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 24px 48px;
+  background: linear-gradient(90deg, var(--color-primary-100) 0%, var(--color-primary-200) 100%);
+  width: 100%;
+  border-bottom-left-radius: var(--radius-app);
+  border-bottom-right-radius: var(--radius-app);
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome_box {
+  max-width: 248px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 25px;
+}
+
+.welcome_desc {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-white);
+}
+
+.links_box {
+  max-width: 792px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.link_box {
+  max-width: 180px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.link_title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 133%;
+  color: var(--color-white);
+}
+
+.underlist {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 133%;
+  color: var(--color-white);
+}
+
+.info_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info_rights {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-white);
+}
+
+.social_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  max-width: 180px;
+  width: 100%;
+}
+
+.social_desc {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--color-white);
+}
+
+.social_link {
+  display: flex;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  max-width: 24px;
+  width: 100%;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.img {
+  width: 100%;
+}
