@@ -25,7 +25,8 @@
       "@/*": ["./src/*"],
       "@/routes*": ["./src/routes/*"],
       "@/components*": ["./src/components/*"],
-      "@/data*": ["./src/data/*"]
+      "@/data*": ["./src/data/*"],
+      "@/pages*": ["./src/pages/*"]
     }
   },
   "include": ["src"],

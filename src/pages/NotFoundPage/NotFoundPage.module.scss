@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: clamp(24px, 5vw, 44px);
+  line-height: 91%;
+  color: var(--color-black);
+}
