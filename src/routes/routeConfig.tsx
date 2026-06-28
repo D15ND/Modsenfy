@@ -1,4 +1,5 @@
 import RootLayout from '@/components/layout/RootLayout/RootLayout';
+import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 import { ROUTE_PATHS } from './routePaths';
 
 export const appRoutes = [
@@ -9,7 +10,7 @@ export const appRoutes = [
     children: [
       { index: true, element: <p>HomePage</p> },
       { path: ROUTE_PATHS.FAVORITES, element: <p>FavoritesPage</p> },
-      { path: ROUTE_PATHS.NOT_FOUND, element: <p>NotFoundPage</p> },
+      { path: ROUTE_PATHS.NOT_FOUND, element: <NotFoundPage /> },
     ],
   },
 ];
