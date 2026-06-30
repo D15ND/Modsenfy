@@ -1,5 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
 import RootLayout from '@/components/layout/RootLayout/RootLayout';
+import HomePage from '@/pages/HomePage/HomePage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 import { ROUTE_PATHS } from './routePaths';
 
@@ -9,7 +10,7 @@ export const appRoutes = [
     element: <RootLayout />,
     errorElement: <ErrorBoundary />,
     children: [
-      { index: true, element: <p>HomePage</p> },
+      { index: true, element: <HomePage /> },
       { path: ROUTE_PATHS.FAVORITES, element: <p>FavoritesPage</p> },
       { path: ROUTE_PATHS.NOT_FOUND, element: <NotFoundPage /> },
     ],

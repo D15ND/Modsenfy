@@ -9,6 +9,7 @@
   text-align: center;
   color: var(--color-primary-100);
   transition: 0.3s ease-in-out;
+  background-color: transparent;
   cursor: pointer;
   &:hover {
     border: 1px solid var(--color-primary-200);
