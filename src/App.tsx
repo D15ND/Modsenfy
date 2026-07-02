@@ -1,13 +1,19 @@
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { RouterProvider } from 'react-router';
 import './App.scss';
+import Spinner from './components/ui/Spinner/Spinner';
+import { categoryContext } from './contexts/categoryContext';
 import { router } from './routes';
 
 const App = () => {
+  const [category, setCategory] = useState('popular');
+
   return (
-    <Suspense fallback={<p>will spinner</p>}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <categoryContext.Provider value={{ category, setCategory }}>
+      <Suspense fallback={<Spinner size="s" />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </categoryContext.Provider>
   );
 };
 

@@ -1,0 +1,24 @@
+.accardion {
+  max-width: 150px;
+  width: 100%;
+  padding: 10px 16px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-accardion);
+  border: 0px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--color-black);
+  &:focus {
+    outline: none;
+  }
+}
+
+.subtitle {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--color-black);
+}

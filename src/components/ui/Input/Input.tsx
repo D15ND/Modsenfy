@@ -1,17 +1,24 @@
-import loopImg from '@/assets/images/icons/search.svg';
 import closureImg from '@/assets/images/icons/cross.svg';
+import loopImg from '@/assets/images/icons/search.svg';
 import styles from './Input.module.scss';
 
 type PlaceHolder = {
   placeholder?: string;
   visible: boolean;
+  value?: string;
+  onChange?: (value: string) => void;
 };
 
-const Input = ({ placeholder, visible }: PlaceHolder) => {
+const Input = ({ placeholder, visible, value, onChange }: PlaceHolder) => {
   return (
     <div className={styles.container}>
       <img src={loopImg} alt="loop" className={styles.image} />
-      <input className={styles.input} placeholder={placeholder} />
+      <input
+        className={styles.input}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
+      />
       <img
         src={closureImg}
         alt="close"
