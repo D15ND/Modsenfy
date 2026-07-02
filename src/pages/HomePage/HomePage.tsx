@@ -1,4 +1,5 @@
-import likeImg from '@/assets/images/icons/Heart.svg';
+import likedImg from '@/assets/images/icons/Heart-fill.svg';
+import unlikedImg from '@/assets/images/icons/Heart.svg';
 import playPayseIcon from '@/assets/images/icons/play.svg';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
@@ -24,6 +25,10 @@ const HomePage = () => {
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
   const [page, setPage] = useState(0);
   const { category } = useContext(categoryContext);
+  const [favorites, setFavorites] = useState<Track[]>(() => {
+    const saved = localStorage.getItem('favorites');
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const handlePrev = () => {
     setPage(page - 1);
@@ -31,6 +36,19 @@ const HomePage = () => {
 
   const handleNext = () => {
     setPage(page + 1);
+  };
+
+  const handleSaveTrack = (track: Track) => {
+    setFavorites((prev) => {
+      const exists = prev.some((item) => item.id === track.id);
+      const updated = exists ? prev.filter((item) => item.id !== track.id) : [...prev, track];
+      localStorage.setItem('favorites', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const isFavorite = (track: Track) => {
+    return favorites.some((item) => item.id === track.id);
   };
 
   useEffect(() => {
@@ -132,7 +150,12 @@ const HomePage = () => {
                   <div className={styles.cards_info}>
                     <h4 className={styles.cards_title}>{card.title}</h4>
                     <p className={styles.cards_author}>{card.user.name}</p>
-                    <img src={likeImg} alt="like" className={styles.cards_icon} />
+                    <img
+                      src={isFavorite(card) ? likedImg : unlikedImg}
+                      alt="like"
+                      className={styles.cards_icon}
+                      onClick={() => handleSaveTrack(card)}
+                    />
                   </div>
                 </div>
               ))
@@ -165,7 +188,12 @@ const HomePage = () => {
               <div className={styles.recommended_card_info}>
                 <h4 className={styles.recommended_card_title}>{card.title}</h4>
                 <p className={styles.recommended_card_author}>{card.user.name}</p>
-                <img src={likeImg} alt="like" className={styles.cards_icon} />
+                <img
+                  src={isFavorite(card) ? likedImg : unlikedImg}
+                  alt="like"
+                  className={styles.cards_icon}
+                  onClick={() => handleSaveTrack(card)}
+                />
               </div>
             </div>
           ))}
