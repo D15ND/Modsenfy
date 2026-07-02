@@ -39,3 +39,12 @@ html {
   background: linear-gradient(90deg, var(--color-primary-100) 0%, var(--color-primary-200) 100%);
   color: var(--color-white) !important;
 }
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 600px;
+  margin: 0 auto;
+}
