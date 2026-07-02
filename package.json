@@ -19,7 +19,7 @@
       "eslint --fix --max-warnings=0",
       "prettier --write"
     ],
-    "*.{html,scss}": [
+    "*.{html,scss, json}": [
       "prettier --write"
     ]
   },
