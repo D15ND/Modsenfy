@@ -1,3 +1,5 @@
+@import '@/styles/mixins';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -42,6 +44,7 @@
   flex-direction: column;
   max-width: 545px;
   width: 100%;
+  padding-right: 50px;
   gap: 8px;
   position: absolute;
   left: 24px;
@@ -59,8 +62,37 @@
 
 .player {
   width: 100%;
-  max-height: 57px;
   border-radius: 200px;
+  overflow: hidden;
+
+  :global {
+    .rhap_container {
+      padding: 0 16px;
+      border-radius: 200px;
+      width: 100%;
+    }
+
+    .rhap_controls-section {
+      flex: 0;
+    }
+
+    .rhap_progress-section {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .rhap_progress-container {
+      flex: 1;
+    }
+
+    .rhap_volume-controls {
+      .rhap_volume-container {
+        .rhap_volume-bar-area {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 .results_box {
@@ -86,12 +118,15 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  @include media-930 {
+    max-width: 420px;
+  }
 }
 
 .results_cards {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
 }
@@ -109,9 +144,17 @@
 
 .card_img_box {
   border-radius: var(--radius-input);
+  max-width: 180px;
   width: 100%;
-  min-height: 167px;
+  aspect-ratio: 1 / 1;
   position: relative;
+}
+
+.card_img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-input);
 }
 
 .play_payse_icon {
@@ -128,11 +171,6 @@
   &:hover {
     background: var(--color-primary-100);
   }
-}
-
-.card_img {
-  width: 100%;
-  border-radius: var(--radius-input);
 }
 
 .cards_info {
@@ -171,19 +209,21 @@
   max-width: 150px;
   width: 100%;
   margin-left: auto;
+  @include media-930 {
+    margin: 0 auto;
+  }
 }
 
 .recommended_box {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 1116px;
   width: 100%;
 }
 
 .recommended_box_img {
   width: 100%;
-  min-height: 170px;
+  aspect-ratio: 1 / 1;
   position: relative;
 }
 
@@ -195,13 +235,20 @@
   color: var(--color-black);
 }
 
+.recommended_cards_wrapper {
+  overflow: hidden;
+}
+
 .recommended_cards {
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  overflow-x: scroll;
+  scrollbar-width: none;
 }
 
 .recommended_card {
+  max-height: 315px;
   max-width: 204px;
   width: 100%;
   padding: 12px;
@@ -214,7 +261,11 @@
 
 .recommended_img {
   width: 100%;
+  display: block;
   border-radius: var(--radius-input);
+  @include media-1200 {
+    width: 180px;
+  }
 }
 
 .recommended_card_info {

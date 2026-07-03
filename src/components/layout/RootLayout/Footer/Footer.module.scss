@@ -1,3 +1,5 @@
+@import '@/styles/mixins';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,9 @@
   width: 100%;
   border-bottom-left-radius: var(--radius-app);
   border-bottom-right-radius: var(--radius-app);
+  @include media-620 {
+    padding: 24px;
+  }
 }
 
 .box {
@@ -14,6 +19,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 48px;
+  @include media-800 {
+    flex-direction: column;
+  }
 }
 
 .welcome_box {
@@ -23,6 +32,12 @@
   flex-direction: column;
   align-items: start;
   gap: 25px;
+  @include media-800 {
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    align-items: center;
+  }
 }
 
 .welcome_desc {
@@ -39,6 +54,12 @@
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  @include media-800 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .link_box {
@@ -81,6 +102,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
+  @include media-620 {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
 }
 
 .info_rights {

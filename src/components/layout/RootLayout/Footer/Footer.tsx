@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 
 const Footer = () => {
   return (
-    <div className={styles.content}>
+    <footer className={styles.content}>
       <div className={styles.box}>
         <div className={styles.welcome_box}>
           <img src={logoFooter} alt="logo" />
@@ -41,7 +41,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

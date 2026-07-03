@@ -28,7 +28,8 @@
       "@/data*": ["./src/data/*"],
       "@/pages*": ["./src/pages/*"],
       "@/contexts*": ["./src/contexts/*"],
-      "@/types*": ["./src/types/*"]
+      "@/types*": ["./src/types/*"],
+      "@/styles*": ["./src/styles/*"]
     }
   },
   "include": ["src"],

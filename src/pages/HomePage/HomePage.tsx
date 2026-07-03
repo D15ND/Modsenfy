@@ -173,30 +173,36 @@ const HomePage = () => {
       </div>
       <div className={styles.recommended_box}>
         <h3 className={styles.recommended_title}>Recommended</h3>
-        <div className={styles.recommended_cards}>
-          {recommendsTracks.map((card) => (
-            <div className={styles.recommended_card} key={card.title}>
-              <div className={styles.recommended_box_img}>
-                <img src={card.artwork['480x480']} alt="card" className={styles.recommended_img} />
-                <img
-                  src={playPayseIcon}
-                  alt="icon"
-                  className={styles.play_payse_icon}
-                  onClick={() => setSelectedTrack(card)}
-                />
+        <div className={styles.recommended_cards_wrapper}>
+          <div className={styles.recommended_cards}>
+            {recommendsTracks.map((card) => (
+              <div className={styles.recommended_card} key={card.title}>
+                <div className={styles.recommended_box_img}>
+                  <img
+                    src={card.artwork['480x480']}
+                    alt="card"
+                    className={styles.recommended_img}
+                  />
+                  <img
+                    src={playPayseIcon}
+                    alt="icon"
+                    className={styles.play_payse_icon}
+                    onClick={() => setSelectedTrack(card)}
+                  />
+                </div>
+                <div className={styles.recommended_card_info}>
+                  <h4 className={styles.recommended_card_title}>{card.title}</h4>
+                  <p className={styles.recommended_card_author}>{card.user.name}</p>
+                  <img
+                    src={isFavorite(card) ? likedImg : unlikedImg}
+                    alt="like"
+                    className={styles.cards_icon}
+                    onClick={() => handleSaveTrack(card)}
+                  />
+                </div>
               </div>
-              <div className={styles.recommended_card_info}>
-                <h4 className={styles.recommended_card_title}>{card.title}</h4>
-                <p className={styles.recommended_card_author}>{card.user.name}</p>
-                <img
-                  src={isFavorite(card) ? likedImg : unlikedImg}
-                  alt="like"
-                  className={styles.cards_icon}
-                  onClick={() => handleSaveTrack(card)}
-                />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

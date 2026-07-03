@@ -50,40 +50,44 @@ const FavoritePage = () => {
           </div>
         </div>
       )}
-      <div className={styles.results_box}>
-        <h3 className={styles.results_title}>Your Favorites</h3>
-        <div className={styles.results_container}>
-          <div className={styles.results_cards}>
-            {favorites.length === 0 ? (
-              <h2 className={styles.results_subtitle}>No favorite tracks</h2>
-            ) : (
-              favorites.map((card) => (
-                <div className={styles.results_card} key={card.title}>
-                  <div className={styles.card_img_box}>
-                    <img src={card.artwork['480x480']} alt="card" className={styles.card_img} />
-                    <img
-                      src={playPayseIcon}
-                      alt="icon"
-                      className={styles.play_payse_icon}
-                      onClick={() => setSelectedTrack(card)}
-                    />
+      {favorites.length === 0 ? (
+        <h2 className={styles.results_subtitle}>No favorite tracks</h2>
+      ) : (
+        <div className={styles.results_box}>
+          <h3 className={styles.results_title}>Your Favorites</h3>
+          <div className={styles.results_container}>
+            <div className={styles.results_cards}>
+              {favorites.length === 0 ? (
+                <h2 className={styles.results_subtitle}>No favorite tracks</h2>
+              ) : (
+                favorites.map((card) => (
+                  <div className={styles.results_card} key={card.title}>
+                    <div className={styles.card_img_box}>
+                      <img src={card.artwork['480x480']} alt="card" className={styles.card_img} />
+                      <img
+                        src={playPayseIcon}
+                        alt="icon"
+                        className={styles.play_payse_icon}
+                        onClick={() => setSelectedTrack(card)}
+                      />
+                    </div>
+                    <div className={styles.cards_info}>
+                      <h4 className={styles.cards_title}>{card.title}</h4>
+                      <p className={styles.cards_author}>{card.user.name}</p>
+                      <img
+                        src={isFavorite(card) ? likedImg : unlikedImg}
+                        alt="like"
+                        className={styles.cards_icon}
+                        onClick={() => handleSaveTrack(card)}
+                      />
+                    </div>
                   </div>
-                  <div className={styles.cards_info}>
-                    <h4 className={styles.cards_title}>{card.title}</h4>
-                    <p className={styles.cards_author}>{card.user.name}</p>
-                    <img
-                      src={isFavorite(card) ? likedImg : unlikedImg}
-                      alt="like"
-                      className={styles.cards_icon}
-                      onClick={() => handleSaveTrack(card)}
-                    />
-                  </div>
-                </div>
-              ))
-            )}
+                ))
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
