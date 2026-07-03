@@ -1,3 +1,5 @@
+@import '@/styles/mixins';
+
 .container {
   display: flex;
   width: 100%;
@@ -5,6 +7,10 @@
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.12);
   border-top-left-radius: var(--radius-app);
   border-top-right-radius: var(--radius-app);
+  @include media-1210 {
+    flex-direction: column;
+    // padding: 0 24px;
+  }
 }
 
 .global {
@@ -16,9 +22,11 @@
 .box {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .content {
   padding: 22px 35px;
   flex: 1;
+  position: relative;
 }

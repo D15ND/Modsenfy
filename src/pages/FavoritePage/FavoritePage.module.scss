@@ -1,3 +1,5 @@
+@import '@/styles/mixins';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,7 @@
   flex-direction: column;
   max-width: 545px;
   width: 100%;
+  padding-right: 50px;
   gap: 8px;
   position: absolute;
   left: 24px;
@@ -39,8 +42,37 @@
 
 .player {
   width: 100%;
-  max-height: 57px;
   border-radius: 200px;
+  overflow: hidden;
+
+  :global {
+    .rhap_container {
+      padding: 0 16px;
+      border-radius: 200px;
+      width: 100%;
+    }
+
+    .rhap_controls-section {
+      flex: 0;
+    }
+
+    .rhap_progress-section {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .rhap_progress-container {
+      flex: 1;
+    }
+
+    .rhap_volume-controls {
+      .rhap_volume-container {
+        .rhap_volume-bar-area {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 .results_box {
@@ -71,9 +103,13 @@
 .results_cards {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+  margin: 0 auto;
   gap: 24px;
+  @include media-930 {
+    max-width: 420px;
+  }
 }
 
 .results_card {
@@ -90,7 +126,7 @@
 .card_img_box {
   border-radius: var(--radius-input);
   width: 100%;
-  min-height: 167px;
+  aspect-ratio: 1 / 1;
   position: relative;
 }
 
@@ -111,7 +147,9 @@
 }
 
 .card_img {
+  display: block;
   width: 100%;
+  height: auto;
   border-radius: var(--radius-input);
 }
 
@@ -148,7 +186,7 @@
 .results_subtitle {
   font-family: var(--font-family);
   font-weight: 600;
-  font-size: 44px;
+  font-size: clamp(24px, 5vw, 44px);
   line-height: 91%;
   color: var(--color-black);
   margin: 0 auto;
@@ -156,4 +194,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
