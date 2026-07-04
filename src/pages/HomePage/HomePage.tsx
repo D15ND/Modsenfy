@@ -129,7 +129,6 @@ const HomePage = () => {
             showFilledProgress={true}
             customAdditionalControls={[]}
             layout="horizontal-reverse"
-            // onPlay={() => console.log('onPlay')}
             onPlay={() => {
               if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
             }}
