@@ -1,6 +1,7 @@
 import likedImg from '@/assets/images/icons/Heart-orange.svg';
 import unlikedImg from '@/assets/images/icons/Heart.svg';
-import playPayseIcon from '@/assets/images/icons/play.svg';
+import pauseIcon from '@/assets/images/icons/pause.svg';
+import playIcon from '@/assets/images/icons/play.svg';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
 import Input from '@/components/ui/Input/Input';
@@ -29,6 +30,7 @@ const HomePage = () => {
     const saved = localStorage.getItem('favorites');
     return saved ? JSON.parse(saved) : [];
   });
+  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
 
   const handlePrev = () => {
     setPage(page - 1);
@@ -49,6 +51,10 @@ const HomePage = () => {
 
   const isFavorite = (track: Track) => {
     return favorites.some((item) => item.id === track.id);
+  };
+
+  const isPlay = (track: Track) => {
+    return currentlyPlaying === track.id;
   };
 
   useEffect(() => {
@@ -123,7 +129,12 @@ const HomePage = () => {
             showFilledProgress={true}
             customAdditionalControls={[]}
             layout="horizontal-reverse"
-            onPlay={() => console.log('onPlay')}
+            // onPlay={() => console.log('onPlay')}
+            onPlay={() => {
+              if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
+            }}
+            onPause={() => setCurrentlyPlaying(null)}
+            onEnded={() => setCurrentlyPlaying(null)}
           />
         </div>
       </div>
@@ -141,7 +152,7 @@ const HomePage = () => {
                   <div className={styles.card_img_box}>
                     <img src={card.artwork['480x480']} alt="card" className={styles.card_img} />
                     <img
-                      src={playPayseIcon}
+                      src={isPlay(card) ? pauseIcon : playIcon}
                       alt="icon"
                       className={styles.play_payse_icon}
                       onClick={() => setSelectedTrack(card)}
@@ -184,7 +195,7 @@ const HomePage = () => {
                     className={styles.recommended_img}
                   />
                   <img
-                    src={playPayseIcon}
+                    src={isPlay(card) ? pauseIcon : playIcon}
                     alt="icon"
                     className={styles.play_payse_icon}
                     onClick={() => setSelectedTrack(card)}
