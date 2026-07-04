@@ -1,4 +1,4 @@
-import likedImg from '@/assets/images/icons/Heart-fill.svg';
+import likedImg from '@/assets/images/icons/Heart-orange.svg';
 import unlikedImg from '@/assets/images/icons/Heart.svg';
 import playPayseIcon from '@/assets/images/icons/play.svg';
 import Accordion from '@/components/ui/Accordion/Accordion';
