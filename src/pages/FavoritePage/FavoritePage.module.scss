@@ -10,7 +10,7 @@
 .player_box {
   width: 100%;
   position: relative;
-  border-radius: var(--radius-input);
+  border-radius: var(--radius-large);
   min-height: 213px;
   background-color: var(--color-primary-100);
   background-image: url('@/assets/images/player-example-l.jpg');
@@ -120,7 +120,7 @@
   max-width: 193px;
   width: 100%;
   border: 1px solid var(--color-neutral-500);
-  border-radius: var(--radius-accardion);
+  border-radius: var(--radius-medium);
   transition: 0.3s ease-in-out;
   &:hover {
     border: 1px solid var(--color-primary-100);
@@ -128,7 +128,7 @@
 }
 
 .card_img_box {
-  border-radius: var(--radius-input);
+  border-radius: var(--radius-large);
   width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
@@ -154,7 +154,7 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-input);
+  border-radius: var(--radius-large);
 }
 
 .cards_info {
