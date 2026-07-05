@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <categoryContext.Provider value={{ category, setCategory }}>
-      <Suspense fallback={<Spinner size="s" />}>
+      <Suspense fallback={<Spinner isLarge={false} />}>
         <RouterProvider router={router} />
       </Suspense>
     </categoryContext.Provider>

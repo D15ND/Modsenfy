@@ -143,7 +143,7 @@ const HomePage = () => {
           <div className={styles.results_cards}>
             {isLoading ? (
               <div className="centered">
-                <Spinner size="s" />
+                <Spinner isLarge={false} />
               </div>
             ) : (
               (searchMusic ? searchResults : tracks).map((card) => (
