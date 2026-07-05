@@ -27,7 +27,7 @@ const Sidebar = () => {
             {Navigation.map((nav) => (
               <li className={styles.list} key={nav.title}>
                 <NavLink to={nav.route} className={styles.link} end>
-                  <img src={nav.icon} alt="icon" />
+                  <nav.icon />
                   <p>{nav.title}</p>
                 </NavLink>
               </li>
