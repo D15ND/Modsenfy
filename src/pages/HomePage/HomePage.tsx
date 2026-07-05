@@ -1,6 +1,7 @@
 import likedImg from '@/assets/images/icons/Heart-orange.svg';
 import unlikedImg from '@/assets/images/icons/Heart.svg';
 import pauseIcon from '@/assets/images/icons/pause.svg';
+import PlayPlayer from '@/assets/images/icons/play-player.svg?react';
 import playIcon from '@/assets/images/icons/play.svg';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
@@ -127,6 +128,10 @@ const HomePage = () => {
             showJumpControls={false}
             showSkipControls={false}
             showFilledProgress={true}
+            customIcons={{
+              play: <PlayPlayer className={styles.player_icon} />,
+              pause: <img src={pauseIcon} className={styles.player_pause} />,
+            }}
             customAdditionalControls={[]}
             layout="horizontal-reverse"
             onPlay={() => {
