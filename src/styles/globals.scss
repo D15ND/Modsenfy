@@ -5,6 +5,11 @@
 .active {
   background: linear-gradient(90deg, $color-primary-100 0%, $color-primary-200 100%);
   color: $color-white !important;
+  &:hover {
+    background: linear-gradient(90deg, $color-primary-100 0%, $color-primary-200 100%);
+    color: $color-white !important;
+    cursor: default;
+  }
 }
 
 .centered {
