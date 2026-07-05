@@ -1,0 +1,17 @@
+@import './reset';
+@import './mixins';
+@import './variables';
+
+.active {
+  background: linear-gradient(90deg, $color-primary-100 0%, $color-primary-200 100%);
+  color: $color-white !important;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 600px;
+  margin: 0 auto;
+}

@@ -1,14 +1,15 @@
 @import '@/styles/mixins';
+@import '@/styles/variables';
 
 .content {
   display: flex;
   flex-direction: column;
   gap: 48px;
   padding: 24px 48px;
-  background: linear-gradient(90deg, var(--color-primary-100) 0%, var(--color-primary-200) 100%);
+  background: linear-gradient(90deg, $color-primary-100 0%, $color-primary-200 100%);
   width: 100%;
-  border-bottom-left-radius: var(--radius-app);
-  border-bottom-right-radius: var(--radius-app);
+  border-bottom-left-radius: $radius-app;
+  border-bottom-right-radius: $radius-app;
   @include media-620 {
     padding: 24px;
   }
@@ -41,11 +42,11 @@
 }
 
 .welcome_desc {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-white);
+  color: $color-white;
 }
 
 .links_box {
@@ -71,11 +72,11 @@
 }
 
 .link_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 600;
   font-size: 18px;
   line-height: 133%;
-  color: var(--color-white);
+  color: $color-white;
 }
 
 .underlist {
@@ -91,11 +92,11 @@
 .link {
   text-decoration: none;
   cursor: pointer;
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 18px;
   line-height: 133%;
-  color: var(--color-white);
+  color: $color-white;
 }
 
 .info_box {
@@ -111,11 +112,11 @@
 }
 
 .info_rights {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-white);
+  color: $color-white;
 }
 
 .social_box {
@@ -128,11 +129,11 @@
 }
 
 .social_desc {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-white);
+  color: $color-white;
 }
 
 .social_link {

@@ -1,4 +1,5 @@
 @import '@/styles/mixins';
+@import '@/styles/variables';
 
 .content {
   max-width: 280px;
@@ -9,12 +10,12 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.12);
-  background: var(--color-white);
-  border-top-left-radius: var(--radius-app);
+  background: $color-white;
+  border-top-left-radius: $radius-app;
   position: relative;
   @include media-1210 {
     max-width: 100%;
-    border-top-right-radius: var(--radius-app);
+    border-top-right-radius: $radius-app;
     padding: 24px;
   }
 }
@@ -33,7 +34,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: var(--color-white);
+    background: $color-white;
     padding: 80px 24px 24px;
     transform: translateY(-100%);
     transition: 0.5s ease-in-out;
@@ -59,11 +60,11 @@
 }
 
 .title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
 }
 
 .underlist {
@@ -81,9 +82,9 @@
   gap: 12px;
   padding: 17px 0px 17px 24px;
   width: 100%;
-  border-radius: var(--radius-small);
-  color: var(--color-neutral-300);
-  font-family: var(--font-family);
+  border-radius: $radius-small;
+  color: $color-neutral-300;
+  font-family: $font-family;
   font-weight: 600;
   font-size: 16px;
   line-height: 125%;
@@ -91,7 +92,7 @@
   background-color: transparent;
   &:hover {
     background: linear-gradient(90deg, rgba(241, 121, 0, 0.2) 0%, rgba(255, 179, 102, 0.2) 100%);
-    color: var(--color-primary-100);
+    color: $color-primary-100;
   }
 }
 
@@ -115,7 +116,7 @@
     display: block;
     width: 24px;
     height: 3px;
-    background: var(--color-neutral-400);
+    background: $color-neutral-400;
     border-radius: 4px;
     transition: all 0.3s ease;
     transform-origin: center;

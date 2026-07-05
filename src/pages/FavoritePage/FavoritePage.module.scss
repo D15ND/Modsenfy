@@ -1,4 +1,5 @@
 @import '@/styles/mixins';
+@import '@/styles/variables';
 
 .content {
   display: flex;
@@ -10,9 +11,9 @@
 .player_box {
   width: 100%;
   position: relative;
-  border-radius: var(--radius-large);
+  border-radius: $radius-large;
   min-height: 213px;
-  background-color: var(--color-primary-100);
+  background-color: $color-primary-100;
   background-image: url('@/assets/images/player-example-l.jpg');
   background-size: cover;
   background-position: center;
@@ -33,11 +34,11 @@
 }
 
 .select_player_description {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 500;
   font-size: 24px;
   line-height: 117%;
-  color: var(--color-black);
+  color: $color-black;
 }
 
 .player {
@@ -84,11 +85,11 @@
 }
 
 .results_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 500;
   font-size: 24px;
   line-height: 117%;
-  color: var(--color-black);
+  color: $color-black;
 }
 
 .results_container {
@@ -119,16 +120,16 @@
   gap: 20px;
   max-width: 193px;
   width: 100%;
-  border: 1px solid var(--color-neutral-500);
-  border-radius: var(--radius-medium);
+  border: 1px solid $color-neutral-500;
+  border-radius: $radius-medium;
   transition: 0.3s ease-in-out;
   &:hover {
-    border: 1px solid var(--color-primary-100);
+    border: 1px solid $color-primary-100;
   }
 }
 
 .card_img_box {
-  border-radius: var(--radius-large);
+  border-radius: $radius-large;
   width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
@@ -146,7 +147,7 @@
   cursor: pointer;
   transition: 0.3s ease-in-out;
   &:hover {
-    background: var(--color-primary-100);
+    background: $color-primary-100;
   }
 }
 
@@ -154,7 +155,7 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-large);
+  border-radius: $radius-large;
 }
 
 .cards_info {
@@ -165,19 +166,19 @@
 }
 
 .cards_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
 }
 
 .cards_author {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 14px;
   line-height: 171%;
-  color: var(--color-neutral-400);
+  color: $color-neutral-400;
 }
 
 .cards_icon {
@@ -188,11 +189,11 @@
 }
 
 .results_subtitle {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 600;
   font-size: clamp(24px, 5vw, 44px);
   line-height: 91%;
-  color: var(--color-black);
+  color: $color-black;
   margin: 0 auto;
   display: flex;
   justify-content: center;
