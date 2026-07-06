@@ -1,23 +1,25 @@
 import { categoryContext } from '@/contexts/categoryContext';
 import { useContext } from 'react';
+import Select from 'react-select';
 import styles from './Accordion.module.scss';
 
 const Accordion = () => {
   const { category, setCategory } = useContext(categoryContext);
 
+  const options = [
+    { value: 'popular', label: 'popular' },
+    { value: 'recent', label: 'recent' },
+  ];
+
   return (
-    <select
-      value={category}
+    <Select
+      options={options}
+      value={options.find((opt) => opt.value === category)}
+      onChange={(option) => setCategory(option?.value || 'popular')}
       className={styles.accardion}
-      onChange={(e) => setCategory(e.target.value)}
-    >
-      <option className={styles.subtitle} value="popular">
-        Popular
-      </option>
-      <option className={styles.subtitle} value="recent">
-        Recent
-      </option>
-    </select>
+      classNamePrefix="custom-select"
+      isSearchable={false}
+    />
   );
 };
 
