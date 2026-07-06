@@ -1,7 +1,4 @@
-import likedImg from '@/assets/images/icons/Heart-orange.svg';
-import unlikedImg from '@/assets/images/icons/Heart.svg';
-import pauseIcon from '@/assets/images/icons/pause.svg';
-import playPayseIcon from '@/assets/images/icons/play.svg';
+import { likedImg, pauseIcon, playIcon, unlikedImg } from '@/assets/images/icons';
 import Player from '@/components/ui/Player/Player';
 import { Track } from '@/types/track';
 import { useState } from 'react';
@@ -47,7 +44,7 @@ const FavoritePage = () => {
               onPlay={() => {
                 if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
               }}
-              onPause={() => setCurrentlyPlaying(null)}
+              onPause={() => {}}
               onEnded={() => setCurrentlyPlaying(null)}
             />
           </div>
@@ -68,7 +65,7 @@ const FavoritePage = () => {
                     <div className={styles.card_img_box}>
                       <img src={card.artwork['480x480']} alt="card" className={styles.card_img} />
                       <img
-                        src={isPlay(card) ? pauseIcon : playPayseIcon}
+                        src={isPlay(card) ? pauseIcon : playIcon}
                         alt="icon"
                         className={styles.play_payse_icon}
                         onClick={() => setSelectedTrack(card)}
