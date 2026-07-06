@@ -1,7 +1,4 @@
-import likedImg from '@/assets/images/icons/Heart-orange.svg';
-import unlikedImg from '@/assets/images/icons/Heart.svg';
-import pauseIcon from '@/assets/images/icons/pause.svg';
-import playIcon from '@/assets/images/icons/play.svg';
+import { likedImg, unlikedImg, pauseIcon, playIcon } from '@/assets/images/icons';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
 import Input from '@/components/ui/Input/Input';
