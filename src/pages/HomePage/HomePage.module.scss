@@ -108,6 +108,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      .rhap_progress-container {
+        max-width: 310px;
+        .rhap_progress-bar {
+          .rhap_progress-indicator {
+            display: none;
+          }
+        }
+      }
     }
 
     .rhap_progress-container {
