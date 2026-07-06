@@ -44,7 +44,7 @@ const FavoritePage = () => {
               onPlay={() => {
                 if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
               }}
-              onPause={() => setCurrentlyPlaying(null)}
+              onPause={() => {}}
               onEnded={() => setCurrentlyPlaying(null)}
             />
           </div>

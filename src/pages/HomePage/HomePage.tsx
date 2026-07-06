@@ -1,4 +1,4 @@
-import { likedImg, unlikedImg, pauseIcon, playIcon } from '@/assets/images/icons';
+import { likedImg, pauseIcon, playIcon, unlikedImg } from '@/assets/images/icons';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
 import Input from '@/components/ui/Input/Input';
@@ -7,10 +7,10 @@ import Spinner from '@/components/ui/Spinner/Spinner';
 import { categoryContext } from '@/contexts/categoryContext';
 import { API_URL } from '@/services/API';
 import { Track } from '@/types/track';
+import { sliceText } from '@/utils/text';
 import { useContext, useEffect, useState } from 'react';
 import 'react-h5-audio-player/lib/styles.css';
 import styles from './HomePage.module.scss';
-import { sliceText } from '@/utils/text';
 
 const limitCategory = 8;
 const limitRecommended = 5;
@@ -123,7 +123,7 @@ const HomePage = () => {
             onPlay={() => {
               if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
             }}
-            onPause={() => setCurrentlyPlaying(null)}
+            onPause={() => {}}
             onEnded={() => setCurrentlyPlaying(null)}
           />
         </div>
