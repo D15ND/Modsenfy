@@ -1,10 +1,12 @@
+@import '@/styles/variables';
+
 .content {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   min-height: 100vh;
-  background-color: var(--color-neutral-300);
+  background-color: $color-neutral-300;
 }
 
 .box {
@@ -15,17 +17,17 @@
   align-items: center;
   padding: 20px 10px;
   gap: 20px;
-  border-radius: var(--radius-nav);
-  border: 1px solid var(--color-white);
+  border-radius: $radius-small;
+  border: 1px solid $color-white;
 }
 
 .title {
   font-size: 30px;
-  font-family: var(--font-family);
-  color: var(--color-white);
+  font-family: $font-family;
+  color: $color-white;
 }
 
 .description {
   font-size: 18px;
-  color: var(--color-white);
+  color: $color-white;
 }

@@ -1,4 +1,5 @@
 @import '@/styles/mixins';
+@import '@/styles/variables';
 
 .content {
   display: flex;
@@ -10,9 +11,9 @@
 .player_box {
   width: 100%;
   position: relative;
-  border-radius: var(--radius-input);
+  border-radius: $radius-large;
   min-height: 213px;
-  background-color: var(--color-primary-100);
+  background-color: $color-primary-100;
   background-image: url('@/assets/images/player-example-l.jpg');
   background-size: cover;
   background-position: center;
@@ -32,11 +33,11 @@
 }
 
 .sort_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-neutral-200);
+  color: $color-neutral-200;
 }
 
 .select_player_box {
@@ -53,46 +54,11 @@
 }
 
 .select_player_description {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 500;
   font-size: 24px;
   line-height: 117%;
-  color: var(--color-black);
-}
-
-.player {
-  width: 100%;
-  border-radius: 200px;
-  overflow: hidden;
-
-  :global {
-    .rhap_container {
-      padding: 0 16px;
-      border-radius: 200px;
-      width: 100%;
-    }
-
-    .rhap_controls-section {
-      flex: 0;
-    }
-
-    .rhap_progress-section {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .rhap_progress-container {
-      flex: 1;
-    }
-
-    .rhap_volume-controls {
-      .rhap_volume-container {
-        .rhap_volume-bar-area {
-          display: none;
-        }
-      }
-    }
-  }
+  color: $color-black;
 }
 
 .results_box {
@@ -100,15 +66,14 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  min-height: 600px;
 }
 
 .results_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 500;
   font-size: 24px;
   line-height: 117%;
-  color: var(--color-black);
+  color: $color-black;
 }
 
 .results_container {
@@ -125,6 +90,7 @@
 
 .results_cards {
   width: 100%;
+  min-height: 390px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -135,26 +101,33 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 20px;
-  max-width: 193px;
+  max-width: clamp(167px, 25vw, 193px);
   width: 100%;
-  border: 1px solid var(--color-neutral-500);
-  border-radius: var(--radius-accardion);
+  border: 1px solid $color-neutral-500;
+  border-radius: $radius-medium;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    border: 1px solid $color-primary-100;
+  }
 }
 
 .card_img_box {
-  border-radius: var(--radius-input);
-  max-width: 180px;
+  border-radius: $radius-large;
+  max-width: clamp(143px, 20vw, 170px);
   width: 100%;
   aspect-ratio: 1 / 1;
   position: relative;
+  height: 90px;
+  margin: 0 auto;
 }
 
 .card_img {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: var(--radius-input);
+  height: 100%;
+  border-radius: $radius-large;
 }
 
 .play_payse_icon {
@@ -169,7 +142,7 @@
   cursor: pointer;
   transition: 0.3s ease-in-out;
   &:hover {
-    background: var(--color-primary-100);
+    background: $color-primary-100;
   }
 }
 
@@ -181,19 +154,19 @@
 }
 
 .cards_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
 }
 
 .cards_author {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 14px;
   line-height: 171%;
-  color: var(--color-neutral-400);
+  color: $color-neutral-400;
 }
 
 .cards_icon {
@@ -228,11 +201,11 @@
 }
 
 .recommended_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 500;
   font-size: 24px;
   line-height: 117%;
-  color: var(--color-black);
+  color: $color-black;
 }
 
 .recommended_cards_wrapper {
@@ -255,14 +228,18 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 1px solid var(--color-neutral-500);
-  border-radius: var(--radius-accardion);
+  border: 1px solid $color-neutral-500;
+  border-radius: $radius-medium;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    border: 1px solid $color-primary-100;
+  }
 }
 
 .recommended_img {
   width: 100%;
   display: block;
-  border-radius: var(--radius-input);
+  border-radius: $radius-large;
   @include media-1200 {
     width: 180px;
   }
@@ -277,17 +254,17 @@
 }
 
 .recommended_card_title {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
 }
 
 .recommended_card_author {
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 14px;
   line-height: 171%;
-  color: var(--color-neutral-300);
+  color: $color-neutral-300;
 }

@@ -1,15 +1,15 @@
 @import '@/styles/mixins';
+@import '@/styles/variables';
 
 .container {
   display: flex;
   width: 100%;
   min-height: calc(100vh - 285px);
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.12);
-  border-top-left-radius: var(--radius-app);
-  border-top-right-radius: var(--radius-app);
+  border-top-left-radius: $radius-app;
+  border-top-right-radius: $radius-app;
   @include media-1210 {
     flex-direction: column;
-    // padding: 0 24px;
   }
 }
 

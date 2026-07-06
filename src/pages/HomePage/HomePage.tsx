@@ -1,17 +1,19 @@
-import likedImg from '@/assets/images/icons/Heart-fill.svg';
+import likedImg from '@/assets/images/icons/Heart-orange.svg';
 import unlikedImg from '@/assets/images/icons/Heart.svg';
-import playPayseIcon from '@/assets/images/icons/play.svg';
+import pauseIcon from '@/assets/images/icons/pause.svg';
+import playIcon from '@/assets/images/icons/play.svg';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
 import Input from '@/components/ui/Input/Input';
+import Player from '@/components/ui/Player/Player';
 import Spinner from '@/components/ui/Spinner/Spinner';
 import { categoryContext } from '@/contexts/categoryContext';
 import { API_URL } from '@/services/API';
 import { Track } from '@/types/track';
 import { useContext, useEffect, useState } from 'react';
-import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import styles from './HomePage.module.scss';
+import { sliceText } from '@/utils/text';
 
 const limitCategory = 8;
 const limitRecommended = 5;
@@ -29,6 +31,7 @@ const HomePage = () => {
     const saved = localStorage.getItem('favorites');
     return saved ? JSON.parse(saved) : [];
   });
+  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
 
   const handlePrev = () => {
     setPage(page - 1);
@@ -49,6 +52,10 @@ const HomePage = () => {
 
   const isFavorite = (track: Track) => {
     return favorites.some((item) => item.id === track.id);
+  };
+
+  const isPlay = (track: Track) => {
+    return currentlyPlaying === track.id;
   };
 
   useEffect(() => {
@@ -114,16 +121,13 @@ const HomePage = () => {
           <h3 className={styles.select_player_description}>
             {selectedTrack ? selectedTrack.title : 'Select a track to listen to'}
           </h3>
-          <AudioPlayer
-            className={styles.player}
-            src={selectedTrack?.stream?.url || ''}
-            autoPlay={true}
-            showJumpControls={false}
-            showSkipControls={false}
-            showFilledProgress={true}
-            customAdditionalControls={[]}
-            layout="horizontal-reverse"
-            onPlay={() => console.log('onPlay')}
+          <Player
+            selectedTrack={selectedTrack}
+            onPlay={() => {
+              if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
+            }}
+            onPause={() => setCurrentlyPlaying(null)}
+            onEnded={() => setCurrentlyPlaying(null)}
           />
         </div>
       </div>
@@ -133,7 +137,7 @@ const HomePage = () => {
           <div className={styles.results_cards}>
             {isLoading ? (
               <div className="centered">
-                <Spinner size="s" />
+                <Spinner isLarge={false} />
               </div>
             ) : (
               (searchMusic ? searchResults : tracks).map((card) => (
@@ -141,14 +145,14 @@ const HomePage = () => {
                   <div className={styles.card_img_box}>
                     <img src={card.artwork['480x480']} alt="card" className={styles.card_img} />
                     <img
-                      src={playPayseIcon}
+                      src={isPlay(card) ? pauseIcon : playIcon}
                       alt="icon"
                       className={styles.play_payse_icon}
                       onClick={() => setSelectedTrack(card)}
                     />
                   </div>
                   <div className={styles.cards_info}>
-                    <h4 className={styles.cards_title}>{card.title}</h4>
+                    <h4 className={styles.cards_title}>{sliceText(card.title)}</h4>
                     <p className={styles.cards_author}>{card.user.name}</p>
                     <img
                       src={isFavorite(card) ? likedImg : unlikedImg}
@@ -184,14 +188,14 @@ const HomePage = () => {
                     className={styles.recommended_img}
                   />
                   <img
-                    src={playPayseIcon}
+                    src={isPlay(card) ? pauseIcon : playIcon}
                     alt="icon"
                     className={styles.play_payse_icon}
                     onClick={() => setSelectedTrack(card)}
                   />
                 </div>
                 <div className={styles.recommended_card_info}>
-                  <h4 className={styles.recommended_card_title}>{card.title}</h4>
+                  <h4 className={styles.recommended_card_title}>{sliceText(card.title)}</h4>
                   <p className={styles.recommended_card_author}>{card.user.name}</p>
                   <img
                     src={isFavorite(card) ? likedImg : unlikedImg}

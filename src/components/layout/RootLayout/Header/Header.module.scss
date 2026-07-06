@@ -1,4 +1,5 @@
 @import '@/styles/mixins';
+@import '@/styles/variables';
 
 .content {
   position: relative;
@@ -10,22 +11,22 @@
   font-weight: 600;
   font-size: 56px;
   line-height: 107%;
-  color: #fff;
+  color: $color-white;
   opacity: 0.65;
   position: absolute;
   left: 48px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
-  -webkit-text-stroke: 1px var(--color-black);
+  -webkit-text-stroke: 1px $color-black;
 }
 
 .img {
   opacity: 0.65;
-  border-top-right-radius: var(--radius-app);
+  border-top-right-radius: $radius-app;
   display: block;
   width: 100%;
-  height: auto;
+  height: 240px;
   @include media-1024 {
     border-radius: 0;
   }

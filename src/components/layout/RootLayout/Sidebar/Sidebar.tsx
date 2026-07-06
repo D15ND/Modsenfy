@@ -1,7 +1,7 @@
 import logo from '@/assets/images/logo.svg';
 import { Navigation } from '@/data/navigation';
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
@@ -9,9 +9,9 @@ const Sidebar = () => {
 
   return (
     <div className={styles.content}>
-      <Link to="/" className={styles.logo}>
+      <a href="/" className={styles.logo}>
         <img src={logo} alt="logo" />
-      </Link>
+      </a>
       <button
         className={`${styles.burger} ${isOpen ? styles.active : ''}`}
         onClick={() => setIsOpen(!isOpen)}
@@ -27,7 +27,7 @@ const Sidebar = () => {
             {Navigation.map((nav) => (
               <li className={styles.list} key={nav.title}>
                 <NavLink to={nav.route} className={styles.link} end>
-                  <img src={nav.icon} alt="icon" />
+                  <nav.icon />
                   <p>{nav.title}</p>
                 </NavLink>
               </li>

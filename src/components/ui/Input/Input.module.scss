@@ -1,3 +1,5 @@
+@import '@/styles/variables';
+
 .container {
   position: relative;
   display: flex;
@@ -22,22 +24,22 @@
 }
 
 .input {
-  border: 0.5px solid var(--color-neutral-300);
+  border: 0.5px solid $color-neutral-300;
   background-color: transparent;
-  border-radius: var(--radius-input);
+  border-radius: $radius-large;
   padding: 12px 12px 12px 48px;
   width: 100%;
-  font-family: var(--font-family);
+  font-family: $font-family;
   font-weight: 300;
   font-size: 16px;
   line-height: 150%;
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
   &::placeholder {
-    font-family: var(--font-family);
+    font-family: $font-family;
     font-weight: 300;
     font-size: 16px;
     line-height: 150%;
-    color: var(--color-neutral-400);
+    color: $color-neutral-400;
   }
   &:focus {
     outline: none;
