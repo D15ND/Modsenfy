@@ -3,24 +3,54 @@
 .accardion {
   max-width: 150px;
   width: 100%;
-  padding: 10px 16px;
-  background-color: $color-white;
   border-radius: $radius-medium;
-  border: 0px;
-  font-family: $font-family;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 143%;
-  color: $color-black;
-  &:focus {
-    outline: none;
-  }
-}
+  box-shadow: 0 4px 20px 0 rgba(241, 121, 0, 0.2);
 
-.subtitle {
-  font-family: $font-family;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 143%;
-  color: $color-black;
+  :global {
+    .custom-select__control--is-focused {
+      box-shadow: none;
+    }
+    .custom-select__control--menu-is-open {
+      .custom-select__indicator {
+        rotate: 180deg;
+      }
+    }
+    .custom-select__control {
+      border: 0;
+      cursor: pointer;
+      border-radius: $radius-medium;
+      padding: 0 10px 0 16px;
+      .custom-select__value-container {
+        padding: 0;
+        .custom-select__single-value {
+          font-family: $font-family;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 143%;
+          color: $color-black;
+        }
+      }
+      .custom-select__indicators {
+        .custom-select__indicator-separator {
+          display: none;
+        }
+        .custom-select__indicator {
+          padding: 0;
+          transition: 0.3s ease-in-out;
+        }
+      }
+    }
+    .custom-select__menu {
+      border-radius: $radius-medium;
+      margin: 3px 0;
+      box-shadow: 0 4px 20px 0 rgba(241, 121, 0, 0.2);
+      .custom-select__option {
+        padding-left: 15px;
+        background-color: $color-white;
+        color: $color-black;
+        border-radius: $radius-medium;
+        cursor: pointer;
+      }
+    }
+  }
 }
