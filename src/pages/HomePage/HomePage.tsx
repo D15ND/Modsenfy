@@ -13,6 +13,7 @@ import { Track } from '@/types/track';
 import { useContext, useEffect, useState } from 'react';
 import 'react-h5-audio-player/lib/styles.css';
 import styles from './HomePage.module.scss';
+import { sliceText } from '@/utils/text';
 
 const limitCategory = 8;
 const limitRecommended = 5;
@@ -151,7 +152,7 @@ const HomePage = () => {
                     />
                   </div>
                   <div className={styles.cards_info}>
-                    <h4 className={styles.cards_title}>{card.title}</h4>
+                    <h4 className={styles.cards_title}>{sliceText(card.title)}</h4>
                     <p className={styles.cards_author}>{card.user.name}</p>
                     <img
                       src={isFavorite(card) ? likedImg : unlikedImg}
@@ -194,7 +195,7 @@ const HomePage = () => {
                   />
                 </div>
                 <div className={styles.recommended_card_info}>
-                  <h4 className={styles.recommended_card_title}>{card.title}</h4>
+                  <h4 className={styles.recommended_card_title}>{sliceText(card.title)}</h4>
                   <p className={styles.recommended_card_author}>{card.user.name}</p>
                   <img
                     src={isFavorite(card) ? likedImg : unlikedImg}
