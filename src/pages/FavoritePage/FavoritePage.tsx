@@ -1,9 +1,10 @@
 import likedImg from '@/assets/images/icons/Heart-orange.svg';
 import unlikedImg from '@/assets/images/icons/Heart.svg';
+import pauseIcon from '@/assets/images/icons/pause.svg';
 import playPayseIcon from '@/assets/images/icons/play.svg';
+import Player from '@/components/ui/Player/Player';
 import { Track } from '@/types/track';
 import { useState } from 'react';
-import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import styles from './FavoritePage.module.scss';
 
@@ -13,7 +14,12 @@ const FavoritePage = () => {
     return saved ? JSON.parse(saved) : [];
   });
 
+  const isPlay = (track: Track) => {
+    return currentlyPlaying === track.id;
+  };
+
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
 
   const handleSaveTrack = (track: Track) => {
     setFavorites((prev) => {
@@ -36,16 +42,13 @@ const FavoritePage = () => {
             <h3 className={styles.select_player_description}>
               {selectedTrack ? selectedTrack.title : 'Select a track to listen to'}
             </h3>
-            <AudioPlayer
-              className={styles.player}
-              src={selectedTrack?.stream?.url || ''}
-              autoPlay={true}
-              showJumpControls={false}
-              showSkipControls={false}
-              showFilledProgress={true}
-              customAdditionalControls={[]}
-              layout="horizontal-reverse"
-              onPlay={() => console.log('onPlay')}
+            <Player
+              selectedTrack={selectedTrack}
+              onPlay={() => {
+                if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
+              }}
+              onPause={() => setCurrentlyPlaying(null)}
+              onEnded={() => setCurrentlyPlaying(null)}
             />
           </div>
         </div>
@@ -65,7 +68,7 @@ const FavoritePage = () => {
                     <div className={styles.card_img_box}>
                       <img src={card.artwork['480x480']} alt="card" className={styles.card_img} />
                       <img
-                        src={playPayseIcon}
+                        src={isPlay(card) ? pauseIcon : playPayseIcon}
                         alt="icon"
                         className={styles.play_payse_icon}
                         onClick={() => setSelectedTrack(card)}

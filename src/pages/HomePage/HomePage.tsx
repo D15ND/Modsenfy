@@ -1,17 +1,16 @@
 import likedImg from '@/assets/images/icons/Heart-orange.svg';
 import unlikedImg from '@/assets/images/icons/Heart.svg';
 import pauseIcon from '@/assets/images/icons/pause.svg';
-import PlayPlayer from '@/assets/images/icons/play-player.svg?react';
 import playIcon from '@/assets/images/icons/play.svg';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
 import Input from '@/components/ui/Input/Input';
+import Player from '@/components/ui/Player/Player';
 import Spinner from '@/components/ui/Spinner/Spinner';
 import { categoryContext } from '@/contexts/categoryContext';
 import { API_URL } from '@/services/API';
 import { Track } from '@/types/track';
 import { useContext, useEffect, useState } from 'react';
-import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import styles from './HomePage.module.scss';
 
@@ -121,19 +120,8 @@ const HomePage = () => {
           <h3 className={styles.select_player_description}>
             {selectedTrack ? selectedTrack.title : 'Select a track to listen to'}
           </h3>
-          <AudioPlayer
-            className={styles.player}
-            src={selectedTrack?.stream?.url || ''}
-            autoPlay={true}
-            showJumpControls={false}
-            showSkipControls={false}
-            showFilledProgress={true}
-            customIcons={{
-              play: <PlayPlayer className={styles.player_icon} />,
-              pause: <img src={pauseIcon} className={styles.player_pause} />,
-            }}
-            customAdditionalControls={[]}
-            layout="horizontal-reverse"
+          <Player
+            selectedTrack={selectedTrack}
             onPlay={() => {
               if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
             }}
