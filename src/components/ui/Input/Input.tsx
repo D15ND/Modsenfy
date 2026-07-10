@@ -1,5 +1,6 @@
 import closureImg from '@/assets/images/icons/cross.svg';
 import loopImg from '@/assets/images/icons/search.svg';
+
 import styles from './Input.module.scss';
 
 type PlaceHolder = {

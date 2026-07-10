@@ -1,5 +1,6 @@
 import imageDesctop from '@/assets/images/header-l.jpg';
 import imageMobile from '@/assets/images/header-s.jpg';
+
 import styles from './Header.module.scss';
 
 const Header = () => {

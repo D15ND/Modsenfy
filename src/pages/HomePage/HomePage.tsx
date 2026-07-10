@@ -1,3 +1,7 @@
+import 'react-h5-audio-player/lib/styles.css';
+
+import { useContext, useEffect, useState } from 'react';
+
 import { likedImg, pauseIcon, playIcon, unlikedImg } from '@/assets/images/icons';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
@@ -8,8 +12,7 @@ import { categoryContext } from '@/contexts/categoryContext';
 import { API_URL } from '@/services/API';
 import { Track } from '@/types/track';
 import { sliceText } from '@/utils/text';
-import { useContext, useEffect, useState } from 'react';
-import 'react-h5-audio-player/lib/styles.css';
+
 import styles from './HomePage.module.scss';
 
 const limitCategory = 8;

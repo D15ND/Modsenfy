@@ -1,5 +1,7 @@
-import Button from '@/components/ui/Button/Button';
 import { Link } from 'react-router';
+
+import Button from '@/components/ui/Button/Button';
+
 import styles from './ErrorBoundary.module.scss';
 
 const ErrorBoundary = () => {

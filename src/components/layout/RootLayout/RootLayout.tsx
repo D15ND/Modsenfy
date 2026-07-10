@@ -1,5 +1,7 @@
-import Wrapper from '@/components/ui/Wrapper/Wrapper';
 import { Outlet } from 'react-router';
+
+import Wrapper from '@/components/ui/Wrapper/Wrapper';
+
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import styles from './RootLayout.module.scss';

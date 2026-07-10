@@ -1,5 +1,6 @@
 import logoFooter from '@/assets/images/logo-footer.svg';
 import { FooterLinks, FooterSocial } from '@/data/footerLinks';
+
 import styles from './Footer.module.scss';
 
 const Footer = () => {

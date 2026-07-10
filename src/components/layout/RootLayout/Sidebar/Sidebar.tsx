@@ -1,7 +1,9 @@
-import logo from '@/assets/images/logo.svg';
-import { Navigation } from '@/data/navigation';
 import { useState } from 'react';
 import { NavLink } from 'react-router';
+
+import logo from '@/assets/images/logo.svg';
+import { Navigation } from '@/data/navigation';
+
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {

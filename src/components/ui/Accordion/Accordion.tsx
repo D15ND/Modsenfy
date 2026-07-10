@@ -1,6 +1,8 @@
-import { categoryContext } from '@/contexts/categoryContext';
 import { useContext } from 'react';
 import Select from 'react-select';
+
+import { categoryContext } from '@/contexts/categoryContext';
+
 import styles from './Accordion.module.scss';
 
 const Accordion = () => {

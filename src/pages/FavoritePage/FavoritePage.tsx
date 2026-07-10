@@ -1,8 +1,11 @@
+import 'react-h5-audio-player/lib/styles.css';
+
+import { useState } from 'react';
+
 import { likedImg, pauseIcon, playIcon, unlikedImg } from '@/assets/images/icons';
 import Player from '@/components/ui/Player/Player';
 import { Track } from '@/types/track';
-import { useState } from 'react';
-import 'react-h5-audio-player/lib/styles.css';
+
 import styles from './FavoritePage.module.scss';
 
 const FavoritePage = () => {
