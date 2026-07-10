@@ -1,6 +1,4 @@
-import instIcon from '@/assets/images/icons/instagram-fill.svg';
-import lnIcon from '@/assets/images/icons/linkedin-box-fill.svg';
-import youtubeIcon from '@/assets/images/icons/youtube-fill.svg';
+import { instIcon, lnIcon, youtubeIcon } from '@/assets/images/icons';
 
 export const FooterLinks = [
   {

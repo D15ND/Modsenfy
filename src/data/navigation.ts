@@ -1,5 +1,4 @@
-import homeImg from '@/assets/images/icons/home.svg?react';
-import microphoneImg from '@/assets/images/icons/microphone.svg?react';
+import { homeImg, microphoneImg } from '@/assets/images/icons';
 import { ROUTE_PATHS } from '@/routes/routePaths';
 
 export const Navigation = [

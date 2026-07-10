@@ -1,8 +1,13 @@
 export { default as closureImg } from './cross.svg';
 export { default as unlikedImg } from './Heart.svg';
 export { default as likedImg } from './Heart-orange.svg';
+export { default as homeImg } from './home.svg?react';
+export { default as instIcon } from './instagram-fill.svg';
+export { default as lnIcon } from './linkedin-box-fill.svg';
+export { default as microphoneImg } from './microphone.svg?react';
 export { default as pauseIcon } from './pause.svg';
 export { default as playIcon } from './play.svg';
 export { default as playPlayer } from './play-player.svg';
 export { default as loopImg } from './search.svg';
 export { default as SpinImg } from './Spinner.svg?react';
+export { default as youtubeIcon } from './youtube-fill.svg';
