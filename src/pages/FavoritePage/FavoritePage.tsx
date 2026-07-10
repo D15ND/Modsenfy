@@ -54,7 +54,9 @@ const FavoritePage = () => {
         </div>
       )}
       {favorites.length === 0 ? (
-        <h2 className={styles.results_subtitle}>No favorite tracks</h2>
+        <div className={styles.plug_box}>
+          <h2 className={styles.results_subtitle}>No favorite tracks</h2>
+        </div>
       ) : (
         <div className={styles.results_box}>
           <h3 className={styles.results_title}>Your Favorites</h3>
