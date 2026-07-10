@@ -140,29 +140,32 @@ const HomePage = () => {
                 <Spinner isLarge={false} />
               </div>
             ) : (
-              (searchMusic ? searchResults : tracks).map((card) => (
-                <div className={styles.results_card} key={card.title}>
-                  <div className={styles.card_img_box}>
-                    <img src={card.artwork['480x480']} alt="card" className={styles.card_img} />
-                    <img
-                      src={isPlay(card) ? pauseIcon : playIcon}
-                      alt="icon"
-                      className={styles.play_payse_icon}
-                      onClick={() => setSelectedTrack(card)}
-                    />
+              (searchMusic ? searchResults : tracks).map((card) => {
+                const { title, artwork, user } = card;
+                return (
+                  <div className={styles.results_card} key={title}>
+                    <div className={styles.card_img_box}>
+                      <img src={artwork['480x480']} alt="card" className={styles.card_img} />
+                      <img
+                        src={isPlay(card) ? pauseIcon : playIcon}
+                        alt="icon"
+                        className={styles.play_payse_icon}
+                        onClick={() => setSelectedTrack(card)}
+                      />
+                    </div>
+                    <div className={styles.cards_info}>
+                      <h4 className={styles.cards_title}>{sliceText(title)}</h4>
+                      <p className={styles.cards_author}>{user.name}</p>
+                      <img
+                        src={isFavorite(card) ? likedImg : unlikedImg}
+                        alt="like"
+                        className={styles.cards_icon}
+                        onClick={() => handleSaveTrack(card)}
+                      />
+                    </div>
                   </div>
-                  <div className={styles.cards_info}>
-                    <h4 className={styles.cards_title}>{sliceText(card.title)}</h4>
-                    <p className={styles.cards_author}>{card.user.name}</p>
-                    <img
-                      src={isFavorite(card) ? likedImg : unlikedImg}
-                      alt="like"
-                      className={styles.cards_icon}
-                      onClick={() => handleSaveTrack(card)}
-                    />
-                  </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
           <div className={styles.buttons}>
@@ -179,33 +182,32 @@ const HomePage = () => {
         <h3 className={styles.recommended_title}>Recommended</h3>
         <div className={styles.recommended_cards_wrapper}>
           <div className={styles.recommended_cards}>
-            {recommendsTracks.map((card) => (
-              <div className={styles.recommended_card} key={card.title}>
-                <div className={styles.recommended_box_img}>
-                  <img
-                    src={card.artwork['480x480']}
-                    alt="card"
-                    className={styles.recommended_img}
-                  />
-                  <img
-                    src={isPlay(card) ? pauseIcon : playIcon}
-                    alt="icon"
-                    className={styles.play_payse_icon}
-                    onClick={() => setSelectedTrack(card)}
-                  />
+            {recommendsTracks.map((card) => {
+              const { title, artwork, user } = card;
+              return (
+                <div className={styles.recommended_card} key={title}>
+                  <div className={styles.recommended_box_img}>
+                    <img src={artwork['480x480']} alt="card" className={styles.recommended_img} />
+                    <img
+                      src={isPlay(card) ? pauseIcon : playIcon}
+                      alt="icon"
+                      className={styles.play_payse_icon}
+                      onClick={() => setSelectedTrack(card)}
+                    />
+                  </div>
+                  <div className={styles.recommended_card_info}>
+                    <h4 className={styles.recommended_card_title}>{sliceText(title)}</h4>
+                    <p className={styles.recommended_card_author}>{user.name}</p>
+                    <img
+                      src={isFavorite(card) ? likedImg : unlikedImg}
+                      alt="like"
+                      className={styles.cards_icon}
+                      onClick={() => handleSaveTrack(card)}
+                    />
+                  </div>
                 </div>
-                <div className={styles.recommended_card_info}>
-                  <h4 className={styles.recommended_card_title}>{sliceText(card.title)}</h4>
-                  <p className={styles.recommended_card_author}>{card.user.name}</p>
-                  <img
-                    src={isFavorite(card) ? likedImg : unlikedImg}
-                    alt="like"
-                    className={styles.cards_icon}
-                    onClick={() => handleSaveTrack(card)}
-                  />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
