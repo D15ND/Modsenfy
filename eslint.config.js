@@ -36,6 +36,13 @@ export default defineConfig([
     rules: {
       'import/newline-after-import': ['error', { count: 1 }],
       'no-duplicate-imports': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 ]);
