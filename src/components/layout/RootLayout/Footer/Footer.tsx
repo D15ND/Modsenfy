@@ -1,4 +1,4 @@
-import logoFooter from '@/assets/images/logo-footer.svg';
+import { logoFooter } from '@/assets/images';
 import { FooterLinks, FooterSocial } from '@/data/footerLinks';
 
 import styles from './Footer.module.scss';

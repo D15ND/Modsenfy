@@ -1,5 +1,4 @@
-import imageDesctop from '@/assets/images/header-l.jpg';
-import imageMobile from '@/assets/images/header-s.jpg';
+import { imageDesctop, imageMobile } from '@/assets/images';
 
 import styles from './Header.module.scss';
 

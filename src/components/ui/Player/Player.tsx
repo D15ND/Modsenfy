@@ -2,8 +2,7 @@ import 'react-h5-audio-player/lib/styles.css';
 
 import AudioPlayer from 'react-h5-audio-player';
 
-import pauseIcon from '@/assets/images/icons/pause.svg';
-import PlayPlayer from '@/assets/images/icons/play-player.svg?react';
+import { pauseIcon, playPlayer } from '@/assets/images/icons';
 import { PlayerProps } from '@/types/player';
 
 import styles from './Player.module.scss';
@@ -18,7 +17,7 @@ const Player = ({ selectedTrack, onPlay, onPause, onEnded }: PlayerProps) => {
       showSkipControls={false}
       showFilledProgress={true}
       customIcons={{
-        play: <PlayPlayer className={styles.player_icon} />,
+        play: <img src={playPlayer} className={styles.player_icon} />,
         pause: <img src={pauseIcon} className={styles.player_pause} />,
       }}
       customAdditionalControls={[]}

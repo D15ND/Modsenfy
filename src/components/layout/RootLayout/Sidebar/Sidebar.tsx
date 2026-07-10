@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router';
 
-import logo from '@/assets/images/logo.svg';
+import { logo } from '@/assets/images';
 import { Navigation } from '@/data/navigation';
 import { ROUTE_PATHS } from '@/routes/routePaths';
 
