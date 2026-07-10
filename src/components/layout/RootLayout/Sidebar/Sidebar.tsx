@@ -27,11 +27,11 @@ const Sidebar = () => {
         <h4 className={styles.title}>Discover</h4>
         <nav>
           <ul className={styles.underlist}>
-            {Navigation.map((nav) => (
-              <li className={styles.list} key={nav.title}>
-                <NavLink to={nav.route} className={styles.link} end>
-                  <nav.icon />
-                  <p>{nav.title}</p>
+            {Navigation.map(({ title, route, Icon }) => (
+              <li className={styles.list} key={title}>
+                <NavLink to={route} className={styles.link} end>
+                  <Icon />
+                  <p>{title}</p>
                 </NavLink>
               </li>
             ))}
