@@ -3,6 +3,7 @@ import { NavLink } from 'react-router';
 
 import logo from '@/assets/images/logo.svg';
 import { Navigation } from '@/data/navigation';
+import { ROUTE_PATHS } from '@/routes/routePaths';
 
 import styles from './Sidebar.module.scss';
 
@@ -11,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <div className={styles.content}>
-      <a href="/" className={styles.logo}>
+      <a href={ROUTE_PATHS.HOME} className={styles.logo}>
         <img src={logo} alt="logo" />
       </a>
       <button
