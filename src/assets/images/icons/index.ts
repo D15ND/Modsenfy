@@ -5,3 +5,4 @@ export { default as pauseIcon } from './pause.svg';
 export { default as playIcon } from './play.svg';
 export { default as playPlayer } from './play-player.svg';
 export { default as loopImg } from './search.svg';
+export { default as SpinImg } from './Spinner.svg?react';
