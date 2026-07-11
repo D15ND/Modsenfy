@@ -35,7 +35,7 @@ const FavoritePage = () => {
   };
 
   return (
-    <div className={styles.content}>
+    <div className={styles.favoritepage}>
       {favorites.length > 0 && (
         <div className={styles.player_box}>
           <div className={styles.select_player_box}>

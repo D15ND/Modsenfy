@@ -7,7 +7,7 @@ import styles from './ErrorBoundary.module.scss';
 
 const ErrorBoundary = () => {
   return (
-    <div className={styles.content}>
+    <div className={styles.errorboundarypage}>
       <div className={styles.box}>
         <h1 className={styles.title}>Error Boundary</h1>
         <p className={styles.description}>This is backup UI page</p>

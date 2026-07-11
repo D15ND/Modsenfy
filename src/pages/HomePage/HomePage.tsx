@@ -105,7 +105,7 @@ const HomePage = () => {
   }, [searchMusic]);
 
   return (
-    <div className={styles.content}>
+    <div className={styles.homepage}>
       <Input
         placeholder="Search artist, title, album"
         visible={false}

@@ -11,7 +11,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={styles.content}>
+    <div className={styles.sidebar}>
       <a href={ROUTE_PATHS.HOME} className={styles.logo}>
         <img src={logo} alt="logo" />
       </a>

@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 
 const Header = () => {
   return (
-    <header className={styles.content}>
+    <header className={styles.header}>
       <picture className={styles.img}>
         <source media="(max-width: 1210px)" srcSet={imageMobile} />
         <source media="(min-width: 1211px)" srcSet={imageDesctop} />

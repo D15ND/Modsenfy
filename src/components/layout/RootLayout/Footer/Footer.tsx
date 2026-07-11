@@ -5,7 +5,7 @@ import styles from './Footer.module.scss';
 
 const Footer = () => {
   return (
-    <footer className={styles.content}>
+    <footer className={styles.footer}>
       <div className={styles.box}>
         <div className={styles.welcome_box}>
           <img src={logoFooter} alt="logo" />

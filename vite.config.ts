@@ -17,6 +17,13 @@ export default defineConfig({
     sourcemap: false,
   },
   plugins: [react(), svgr()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['import', 'global-builtin'],
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
