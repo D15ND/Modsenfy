@@ -139,33 +139,37 @@ const HomePage = () => {
               <div className="centered">
                 <Spinner isLarge={false} />
               </div>
+            ) : searchMusic && searchResults.length === 0 ? (
+              <h2 className={styles.results_subtitle}>Not Found</h2>
             ) : (
-              (searchMusic ? searchResults : tracks).map((card) => {
-                const { title, artwork, user } = card;
-                return (
-                  <div className={styles.results_card} key={title}>
-                    <div className={styles.card_img_box}>
-                      <img src={artwork['480x480']} alt="card" className={styles.card_img} />
-                      <img
-                        src={isPlay(card) ? pauseIcon : playIcon}
-                        alt="icon"
-                        className={styles.play_payse_icon}
-                        onClick={() => setSelectedTrack(card)}
-                      />
+              (searchMusic ? searchResults : tracks)
+                .filter((card) => Object.keys(card).length > 0)
+                .map((card) => {
+                  const { title, artwork, user } = card;
+                  return (
+                    <div className={styles.results_card} key={title}>
+                      <div className={styles.card_img_box}>
+                        <img src={artwork['480x480']} alt="card" className={styles.card_img} />
+                        <img
+                          src={isPlay(card) ? pauseIcon : playIcon}
+                          alt="icon"
+                          className={styles.play_payse_icon}
+                          onClick={() => setSelectedTrack(card)}
+                        />
+                      </div>
+                      <div className={styles.cards_info}>
+                        <h4 className={styles.cards_title}>{sliceText(title)}</h4>
+                        <p className={styles.cards_author}>{user.name}</p>
+                        <img
+                          src={isFavorite(card) ? likedImg : unlikedImg}
+                          alt="like"
+                          className={styles.cards_icon}
+                          onClick={() => handleSaveTrack(card)}
+                        />
+                      </div>
                     </div>
-                    <div className={styles.cards_info}>
-                      <h4 className={styles.cards_title}>{sliceText(title)}</h4>
-                      <p className={styles.cards_author}>{user.name}</p>
-                      <img
-                        src={isFavorite(card) ? likedImg : unlikedImg}
-                        alt="like"
-                        className={styles.cards_icon}
-                        onClick={() => handleSaveTrack(card)}
-                      />
-                    </div>
-                  </div>
-                );
-              })
+                  );
+                })
             )}
           </div>
           <div className={styles.buttons}>
