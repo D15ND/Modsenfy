@@ -1,8 +1,7 @@
-import 'react-h5-audio-player/lib/styles.css';
-
 import { useContext, useEffect, useState } from 'react';
 
 import { likedImg, pauseIcon, playIcon, unlikedImg } from '@/assets/images/icons';
+import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
 import Input from '@/components/ui/Input/Input';
@@ -134,85 +133,89 @@ const HomePage = () => {
       <div className={styles.results_box}>
         <h3 className={styles.results_title}>Search results</h3>
         <div className={styles.results_container}>
-          <div className={styles.results_cards}>
-            {isLoading ? (
-              <div className="centered">
-                <Spinner isLarge={false} />
-              </div>
-            ) : searchMusic && searchResults.length === 0 ? (
-              <h2 className={styles.results_subtitle}>Not Found</h2>
-            ) : (
-              (searchMusic ? searchResults : tracks)
-                .filter((card) => Object.keys(card).length > 0)
-                .map((card) => {
-                  const { title, artwork, user } = card;
-                  return (
-                    <div className={styles.results_card} key={title}>
-                      <div className={styles.card_img_box}>
-                        <img src={artwork['480x480']} alt="card" className={styles.card_img} />
-                        <img
-                          src={isPlay(card) ? pauseIcon : playIcon}
-                          alt="icon"
-                          className={styles.play_payse_icon}
-                          onClick={() => setSelectedTrack(card)}
-                        />
+          <ErrorBoundary>
+            <div className={styles.results_cards}>
+              {isLoading ? (
+                <div className="centered">
+                  <Spinner isLarge={false} />
+                </div>
+              ) : searchMusic && searchResults.length === 0 ? (
+                <h2 className={styles.results_subtitle}>Not Found</h2>
+              ) : (
+                (searchMusic ? searchResults : tracks)
+                  .filter((card) => Object.keys(card).length > 0)
+                  .map((card) => {
+                    const { title, artwork, user } = card;
+                    return (
+                      <div className={styles.results_card} key={title}>
+                        <div className={styles.card_img_box}>
+                          <img src={artwork['480x480']} alt="card" className={styles.card_img} />
+                          <img
+                            src={isPlay(card) ? pauseIcon : playIcon}
+                            alt="icon"
+                            className={styles.play_payse_icon}
+                            onClick={() => setSelectedTrack(card)}
+                          />
+                        </div>
+                        <div className={styles.cards_info}>
+                          <h4 className={styles.cards_title}>{sliceText(title)}</h4>
+                          <p className={styles.cards_author}>{user.name}</p>
+                          <img
+                            src={isFavorite(card) ? likedImg : unlikedImg}
+                            alt="like"
+                            className={styles.cards_icon}
+                            onClick={() => handleSaveTrack(card)}
+                          />
+                        </div>
                       </div>
-                      <div className={styles.cards_info}>
-                        <h4 className={styles.cards_title}>{sliceText(title)}</h4>
-                        <p className={styles.cards_author}>{user.name}</p>
-                        <img
-                          src={isFavorite(card) ? likedImg : unlikedImg}
-                          alt="like"
-                          className={styles.cards_icon}
-                          onClick={() => handleSaveTrack(card)}
-                        />
-                      </div>
-                    </div>
-                  );
-                })
-            )}
-          </div>
-          <div className={styles.buttons}>
-            <Button disabled={page === 0} onClick={handlePrev}>
-              Prev
-            </Button>
-            <Button disabled={tracks.length < limitCategory} onClick={handleNext}>
-              Next
-            </Button>
-          </div>
+                    );
+                  })
+              )}
+            </div>
+            <div className={styles.buttons}>
+              <Button disabled={page === 0} onClick={handlePrev}>
+                Prev
+              </Button>
+              <Button disabled={tracks.length < limitCategory} onClick={handleNext}>
+                Next
+              </Button>
+            </div>
+          </ErrorBoundary>
         </div>
       </div>
       <div className={styles.recommended_box}>
         <h3 className={styles.recommended_title}>Recommended</h3>
         <div className={styles.recommended_cards_wrapper}>
-          <div className={styles.recommended_cards}>
-            {recommendsTracks.map((card) => {
-              const { title, artwork, user } = card;
-              return (
-                <div className={styles.recommended_card} key={title}>
-                  <div className={styles.recommended_box_img}>
-                    <img src={artwork['480x480']} alt="card" className={styles.recommended_img} />
-                    <img
-                      src={isPlay(card) ? pauseIcon : playIcon}
-                      alt="icon"
-                      className={styles.play_payse_icon}
-                      onClick={() => setSelectedTrack(card)}
-                    />
+          <ErrorBoundary>
+            <div className={styles.recommended_cards}>
+              {recommendsTracks.map((card) => {
+                const { title, artwork, user } = card;
+                return (
+                  <div className={styles.recommended_card} key={title}>
+                    <div className={styles.recommended_box_img}>
+                      <img src={artwork['480x480']} alt="card" className={styles.recommended_img} />
+                      <img
+                        src={isPlay(card) ? pauseIcon : playIcon}
+                        alt="icon"
+                        className={styles.play_payse_icon}
+                        onClick={() => setSelectedTrack(card)}
+                      />
+                    </div>
+                    <div className={styles.recommended_card_info}>
+                      <h4 className={styles.recommended_card_title}>{sliceText(title)}</h4>
+                      <p className={styles.recommended_card_author}>{user.name}</p>
+                      <img
+                        src={isFavorite(card) ? likedImg : unlikedImg}
+                        alt="like"
+                        className={styles.cards_icon}
+                        onClick={() => handleSaveTrack(card)}
+                      />
+                    </div>
                   </div>
-                  <div className={styles.recommended_card_info}>
-                    <h4 className={styles.recommended_card_title}>{sliceText(title)}</h4>
-                    <p className={styles.recommended_card_author}>{user.name}</p>
-                    <img
-                      src={isFavorite(card) ? likedImg : unlikedImg}
-                      alt="like"
-                      className={styles.cards_icon}
-                      onClick={() => handleSaveTrack(card)}
-                    />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </ErrorBoundary>
         </div>
       </div>
     </div>

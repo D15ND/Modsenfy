@@ -1,8 +1,7 @@
-import 'react-h5-audio-player/lib/styles.css';
-
 import { useState } from 'react';
 
 import { likedImg, pauseIcon, playIcon, unlikedImg } from '@/assets/images/icons';
+import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
 import Player from '@/components/ui/Player/Player';
 import { Track } from '@/types/track';
 
@@ -61,38 +60,40 @@ const FavoritePage = () => {
         <div className={styles.results_box}>
           <h3 className={styles.results_title}>Your Favorites</h3>
           <div className={styles.results_container}>
-            <div className={styles.results_cards}>
-              {favorites.length === 0 ? (
-                <h2 className={styles.results_subtitle}>No favorite tracks</h2>
-              ) : (
-                favorites.map((card) => {
-                  const { title, artwork, user } = card;
-                  return (
-                    <div className={styles.results_card} key={title}>
-                      <div className={styles.card_img_box}>
-                        <img src={artwork['480x480']} alt="card" className={styles.card_img} />
-                        <img
-                          src={isPlay(card) ? pauseIcon : playIcon}
-                          alt="icon"
-                          className={styles.play_payse_icon}
-                          onClick={() => setSelectedTrack(card)}
-                        />
+            <ErrorBoundary>
+              <div className={styles.results_cards}>
+                {favorites.length === 0 ? (
+                  <h2 className={styles.results_subtitle}>No favorite tracks</h2>
+                ) : (
+                  favorites.map((card) => {
+                    const { title, artwork, user } = card;
+                    return (
+                      <div className={styles.results_card} key={title}>
+                        <div className={styles.card_img_box}>
+                          <img src={artwork['480x480']} alt="card" className={styles.card_img} />
+                          <img
+                            src={isPlay(card) ? pauseIcon : playIcon}
+                            alt="icon"
+                            className={styles.play_payse_icon}
+                            onClick={() => setSelectedTrack(card)}
+                          />
+                        </div>
+                        <div className={styles.cards_info}>
+                          <h4 className={styles.cards_title}>{title}</h4>
+                          <p className={styles.cards_author}>{user.name}</p>
+                          <img
+                            src={isFavorite(card) ? likedImg : unlikedImg}
+                            alt="like"
+                            className={styles.cards_icon}
+                            onClick={() => handleSaveTrack(card)}
+                          />
+                        </div>
                       </div>
-                      <div className={styles.cards_info}>
-                        <h4 className={styles.cards_title}>{title}</h4>
-                        <p className={styles.cards_author}>{user.name}</p>
-                        <img
-                          src={isFavorite(card) ? likedImg : unlikedImg}
-                          alt="like"
-                          className={styles.cards_icon}
-                          onClick={() => handleSaveTrack(card)}
-                        />
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-            </div>
+                    );
+                  })
+                )}
+              </div>
+            </ErrorBoundary>
           </div>
         </div>
       )}
