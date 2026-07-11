@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 
 import { logo } from '@/assets/images';
@@ -9,6 +9,14 @@ import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('scrollBlock');
+  }, [isOpen]);
 
   return (
     <div className={styles.sidebar}>
@@ -29,7 +37,7 @@ const Sidebar = () => {
           <ul className={styles.underlist}>
             {Navigation.map(({ title, route, Icon }) => (
               <li className={styles.list} key={title}>
-                <NavLink to={route} className={styles.link} end>
+                <NavLink to={route} className={styles.link} end onClick={handleClose}>
                   <Icon />
                   <p>{title}</p>
                 </NavLink>
