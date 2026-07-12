@@ -19,7 +19,7 @@ export const useTrendingTracks = (category: string, page: number) => {
         const data = await response.json();
         setTracks(data.data);
       } catch {
-        console.log('Error category request API');
+        throw new Error('Error category request API');
       } finally {
         setIsLoading(false);
       }

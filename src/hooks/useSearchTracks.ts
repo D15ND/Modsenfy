@@ -22,7 +22,7 @@ export const useSearchTracks = (searchMusic: string) => {
         const data = await response.json();
         setSearchResults(data.data || []);
       } catch {
-        console.log('error search API');
+        throw new Error('error search API');
       }
     };
     fetchSearchRequest();

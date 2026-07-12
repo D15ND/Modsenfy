@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
-import TrackCard from '@/components/track/TrackCard/TrackCard';
+import TrackCard from '@/components/TrackCard/TrackCard';
 import Player from '@/components/ui/Player/Player';
 import { getFavorites, toggleFavorite } from '@/services/favoritesService';
 import { Track } from '@/types/track';

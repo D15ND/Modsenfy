@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
-import TrackCard from '@/components/track/TrackCard/TrackCard';
+import TrackCard from '@/components/TrackCard/TrackCard';
 import Accordion from '@/components/ui/Accordion/Accordion';
 import Button from '@/components/ui/Button/Button';
 import Input from '@/components/ui/Input/Input';

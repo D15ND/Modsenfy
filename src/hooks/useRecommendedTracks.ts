@@ -15,7 +15,7 @@ export const useRecommendedTracks = () => {
         const data = await response.json();
         setRecommendsTracks(data.data);
       } catch {
-        console.log('error recommended API');
+        throw new Error('error recommended API');
       }
     };
     fetchRecommendedRequest();
