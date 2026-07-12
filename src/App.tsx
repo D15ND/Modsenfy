@@ -1,12 +1,16 @@
+import './styles/globals.scss';
+
 import { Suspense, useState } from 'react';
 import { RouterProvider } from 'react-router';
+
+import { CATEGORY } from '@/types/category';
+
 import Spinner from './components/ui/Spinner/Spinner';
 import { categoryContext } from './contexts/categoryContext';
 import { router } from './routes';
-import './styles/globals.scss';
 
 const App = () => {
-  const [category, setCategory] = useState('popular');
+  const [category, setCategory] = useState(CATEGORY.POPULAR);
 
   return (
     <categoryContext.Provider value={{ category, setCategory }}>

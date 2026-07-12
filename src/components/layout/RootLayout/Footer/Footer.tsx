@@ -1,10 +1,11 @@
-import logoFooter from '@/assets/images/logo-footer.svg';
+import { logoFooter } from '@/assets/images';
 import { FooterLinks, FooterSocial } from '@/data/footerLinks';
+
 import styles from './Footer.module.scss';
 
 const Footer = () => {
   return (
-    <footer className={styles.content}>
+    <footer className={styles.footer}>
       <div className={styles.box}>
         <div className={styles.welcome_box}>
           <img src={logoFooter} alt="logo" />
@@ -14,14 +15,14 @@ const Footer = () => {
           </p>
         </div>
         <div className={styles.links_box}>
-          {FooterLinks.map((box) => (
-            <div key={box.title} className={styles.link_box}>
-              <h4 className={styles.link_title}>{box.title}</h4>
+          {FooterLinks.map(({ title, links }) => (
+            <div key={title} className={styles.link_box}>
+              <h4 className={styles.link_title}>{title}</h4>
               <ul className={styles.underlist}>
-                {box.links.map((link) => (
-                  <li key={link.label} className={styles.list}>
-                    <a href={link.path} className={styles.link}>
-                      {link.label}
+                {links.map(({ label, path }) => (
+                  <li key={label} className={styles.list}>
+                    <a href={path} className={styles.link}>
+                      {label}
                     </a>
                   </li>
                 ))}
@@ -34,9 +35,9 @@ const Footer = () => {
         <p className={styles.info_rights}>Modsenfy © 2000-2025, All Rights Reserved</p>
         <div className={styles.social_box}>
           <p className={styles.social_desc}>Contact us</p>
-          {FooterSocial.map((link) => (
-            <a href={link.path} key={link.icon} className={styles.social_link}>
-              <img src={link.icon} alt="icon" className={styles.img} />
+          {FooterSocial.map(({ path, icon }) => (
+            <a href={path} key={icon} className={styles.social_link}>
+              <img src={icon} alt="icon" className={styles.img} />
             </a>
           ))}
         </div>

@@ -1,19 +1,35 @@
-import Button from '@/components/ui/Button/Button';
-import { Link } from 'react-router';
+import { Component, ReactNode } from 'react';
+
 import styles from './ErrorBoundary.module.scss';
 
-const ErrorBoundary = () => {
-  return (
-    <div className={styles.content}>
-      <div className={styles.box}>
-        <h1 className={styles.title}>Error Boundary</h1>
-        <p className={styles.description}>This is backup UI page</p>
-        <Link to="/">
-          <Button disabled={false}>Go back</Button>
-        </Link>
-      </div>
-    </div>
-  );
+type Props = {
+  children: ReactNode;
 };
+
+type State = {
+  hasError: boolean;
+};
+
+class ErrorBoundary extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(): State {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
+    console.error('Error:', error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <p className={styles.error_msg}>Error boundary</p>;
+    }
+    return this.props.children;
+  }
+}
 
 export default ErrorBoundary;

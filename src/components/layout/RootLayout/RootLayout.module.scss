@@ -10,6 +10,7 @@
   border-top-right-radius: $radius-app;
   @include media-1210 {
     flex-direction: column;
+    min-height: auto;
   }
 }
 
@@ -25,8 +26,11 @@
   width: 100%;
 }
 
-.content {
-  padding: 22px 35px;
+.pages {
+  padding: 35px 22px;
   flex: 1;
   position: relative;
+  @include media-1210 {
+    padding: 24px 16px;
+  }
 }

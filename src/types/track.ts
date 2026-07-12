@@ -11,3 +11,12 @@ export type Track = {
     url: string;
   };
 };
+
+export type TrackCardProps = {
+  track: Track;
+  playing: boolean;
+  favorite: boolean;
+  cardType: 'base' | 'recommended';
+  onPlay: (track: Track) => void;
+  onToggleFavorite: (track: Track) => void;
+};
