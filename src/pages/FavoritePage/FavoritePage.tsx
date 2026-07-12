@@ -1,36 +1,25 @@
 import { useState } from 'react';
 
-import { likedImg, pauseIcon, playIcon, unlikedImg } from '@/assets/images/icons';
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
+import TrackCard from '@/components/track/TrackCard/TrackCard';
 import Player from '@/components/ui/Player/Player';
+import { getFavorites, toggleFavorite } from '@/services/favoritesService';
 import { Track } from '@/types/track';
 
 import styles from './FavoritePage.module.scss';
 
 const FavoritePage = () => {
-  const [favorites, setFavorites] = useState<Track[]>(() => {
-    const saved = localStorage.getItem('favorites');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [favorites, setFavorites] = useState(getFavorites);
+
+  const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
 
   const isPlay = (track: Track) => {
     return currentlyPlaying === track.id;
   };
 
-  const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
-  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
-
   const handleSaveTrack = (track: Track) => {
-    setFavorites((prev) => {
-      const exists = prev.some((item) => item.id === track.id);
-      const updated = exists ? prev.filter((item) => item.id !== track.id) : [...prev, track];
-      localStorage.setItem('favorites', JSON.stringify(updated));
-      return updated;
-    });
-  };
-
-  const isFavorite = (track: Track) => {
-    return favorites.some((item) => item.id === track.id);
+    setFavorites(toggleFavorite(track));
   };
 
   return (
@@ -44,7 +33,9 @@ const FavoritePage = () => {
             <Player
               selectedTrack={selectedTrack}
               onPlay={() => {
-                if (selectedTrack?.id) setCurrentlyPlaying(selectedTrack.id);
+                if (selectedTrack?.id) {
+                  setCurrentlyPlaying(selectedTrack.id);
+                }
               }}
               onPause={() => {}}
               onEnded={() => setCurrentlyPlaying(null)}
@@ -62,36 +53,17 @@ const FavoritePage = () => {
           <div className={styles.results_container}>
             <ErrorBoundary>
               <div className={styles.results_cards}>
-                {favorites.length === 0 ? (
-                  <h2 className={styles.results_subtitle}>No favorite tracks</h2>
-                ) : (
-                  favorites.map((card) => {
-                    const { title, artwork, user } = card;
-                    return (
-                      <div className={styles.results_card} key={title}>
-                        <div className={styles.card_img_box}>
-                          <img src={artwork['480x480']} alt="card" className={styles.card_img} />
-                          <img
-                            src={isPlay(card) ? pauseIcon : playIcon}
-                            alt="icon"
-                            className={styles.play_payse_icon}
-                            onClick={() => setSelectedTrack(card)}
-                          />
-                        </div>
-                        <div className={styles.cards_info}>
-                          <h4 className={styles.cards_title}>{title}</h4>
-                          <p className={styles.cards_author}>{user.name}</p>
-                          <img
-                            src={isFavorite(card) ? likedImg : unlikedImg}
-                            alt="like"
-                            className={styles.cards_icon}
-                            onClick={() => handleSaveTrack(card)}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })
-                )}
+                {favorites.map((track) => (
+                  <TrackCard
+                    key={track.id}
+                    track={track}
+                    playing={isPlay(track)}
+                    favorite
+                    cardType="base"
+                    onPlay={setSelectedTrack}
+                    onToggleFavorite={handleSaveTrack}
+                  />
+                ))}
               </div>
             </ErrorBoundary>
           </div>

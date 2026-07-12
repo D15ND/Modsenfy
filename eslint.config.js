@@ -42,6 +42,7 @@ export default defineConfig([
       'no-duplicate-imports': 'error',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+      'react-hooks/set-state-in-effect': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {

@@ -1,0 +1,99 @@
+@import '@/styles/mixins';
+@import '@/styles/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px;
+  width: 100%;
+  max-width: 193px;
+  border: 1px solid $color-neutral-500;
+  border-radius: $radius-medium;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    border-color: $color-primary-100;
+  }
+}
+
+.image_box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  border-radius: $radius-large;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-large;
+}
+
+.playIcon {
+  max-width: 36px;
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 100px;
+  background: rgba(18, 18, 18, 0.5);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background: $color-primary-100;
+  }
+}
+
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.title {
+  font-family: $font-family;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: $color-neutral-100;
+}
+
+.author {
+  font-family: $font-family;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 171%;
+  color: $color-neutral-400;
+}
+
+.favoriteIcon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.base {
+  max-width: 193px;
+  @include media-930 {
+    max-width: 167px;
+  }
+  .image_box {
+    max-width: 169px;
+    width: 100%;
+    height: 90px;
+  }
+}
+
+.recommended {
+  max-width: 204px;
+  .image_box {
+    @include media-1200 {
+      width: 180px;
+    }
+  }
+}
